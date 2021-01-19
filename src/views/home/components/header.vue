@@ -4,7 +4,7 @@
       <div class="header-top">
         <img class="header-logo2" src="../../../assets/img/public/china-mobile.png" alt="logo">
 <!--        <div class="school-title"></div>-->
-        <div class="school-title">移动实验中学</div>
+        <div class="school-title">xx实验中学</div>
       </div>
       <div class="header-nav">
         <div :class="['nav-item', item.name===currentNav?'active':'']"
