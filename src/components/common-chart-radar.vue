@@ -4,7 +4,7 @@
 
 <script>
 import options from "./mixins/common-chart-radar";
-
+import {merge} from 'lodash-es'
 export default {
   mixins: [options],
   props: {
@@ -16,31 +16,10 @@ export default {
   },
   methods: {
     renderChart() {
-      let _this = this;
-      if (this.optionData.radarShow) {
-        this.option.series = this.optionData.series;
-        if (this.optionData.radar) {
-          for (let i in this.optionData.radar) {
-            if (this.option.radar[i]) {
-              this.option.radar[i] = this.optionData.radar[i];
-            }
-          }
-        }
-      } else {
-        this.$set(this.option.series[0], "data", this.optionData.data[0].data); //数据初始化
-        this.option.series[0].name = this.optionData.data[0].name;
-        this.option.radar.center = this.optionData.center;
-        this.option.radar.radius = this.optionData.radius;
-        this.option.radar.indicator = this.optionData.indicator;
-      }
-      this.option.tooltip = {
-        ...this.option.tooltip,
-        ...this.optionData.tooltip
-      };
-      this.option.legend = { ...this.option.legend, ...this.optionData.legend };
 
+      const option = merge({},this.option,this.optionData)
       this.myChart = this.$echarts.init(document.getElementById(this.idName));
-      this.myChart.setOption(this.option);
+      this.myChart.setOption(option);
 
       this.myChart.on("mouseover", function(params) {
         var isSelectedDot = params.event.target.__dimIdx;

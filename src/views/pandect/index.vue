@@ -40,16 +40,16 @@
           <div class="access-statistics">
             <div class="access-statistics-item">
               <div
-                v-if="access.series.data.length"
-              >{{access.series.data[0].value + access.series.data[1].value}}</div>
+                v-if="access.series[0].data.length"
+              >{{access.series[0].data[0].value + access.series[0].data[1].value}}</div>
               <div>总通过人次</div>
             </div>
             <div class="access-statistics-item">
-              <div v-if="access.series.data.length">{{access.series.data[0].value}}</div>
+              <div v-if="access.series[0].data.length">{{access.series[0].data[0].value}}</div>
               <div>正常通过次数</div>
             </div>
             <div class="access-statistics-item">
-              <div v-if="access.series.data.length">{{access.series.data[1].value}}</div>
+              <div v-if="access.series[0].data.length">{{access.series[0].data[1].value}}</div>
               <div>异常报警次数</div>
             </div>
           </div>
@@ -170,29 +170,6 @@ export default {
     }
   },
   data() {
-    const pieLegendStyle = {
-      show: true,
-      orient: "vertical",
-      itemGap: Number(this.echartsSize(12)),
-      itemWidth: Number(this.echartsSize(12)),
-      itemHeight: Number(this.echartsSize(12)),
-      textStyle: {
-        color: "#fff",
-        fontSize: this.echartsSize(12)
-      },
-      right: '20%',
-      top: 'center'
-    };
-    const pieSeriesStyle = {
-      center: ["20%", "50%"],
-      radius: ["70%", "80%"],
-      labelLine: {
-        length2: this.echartsSize(100),
-        lineStyle: {
-          color: "#999"
-        }
-      }
-    };
     return {
       flvjs: {},
       videoOptions1: [
@@ -203,13 +180,24 @@ export default {
       ],
       // 设备在线率
       equipmentOnline: {
-        legend: Object.assign({}, pieLegendStyle, {
+        legend: {
+          show: true,
+          orient: "vertical",
+          itemGap: Number(this.echartsSize(12)),
+          itemWidth: Number(this.echartsSize(12)),
+          itemHeight: Number(this.echartsSize(12)),
+          textStyle: {
+            color: "#fff",
+            fontSize: this.echartsSize(12)
+          },
+          right: '10%',
+          top: 'center',
           formatter: name => {
             let sum = 0;
-            for (const v of this.equipmentOnline.series.data) {
+            for (const v of this.equipmentOnline.series[0].data) {
               sum += v.value;
             }
-            for (const k of this.equipmentOnline.series.data) {
+            for (const k of this.equipmentOnline.series[0].data) {
               if (k.name === name) {
                 return `${name}    ${k.value}    ${(
                   (k.value / sum) *
@@ -218,16 +206,19 @@ export default {
               }
             }
           }
-        }),
-        series: Object.assign({}, pieSeriesStyle, {
+        },
+        series: [{
+          center: ["20%", "50%"],
+          radius: ["70%", "80%"],
           label: {
-            show: false
+            show: false,
+            normal: {show: false}
           },
-          labelLine: {
-            show: false
+          labelLine:{
+            show:false,
           },
           data: []
-        })
+        }]
       },
       equipmentTotal: 0,
       // 人员统计
@@ -235,39 +226,41 @@ export default {
         {
           title: "学校总人数",
           img: require("@/assets/img/pandect/num-icon1.png"),
-          num: []
+          num: [4,0,8,3]
         },
         {
           title: "教师人数",
           img: require("@/assets/img/pandect/num-icon2.png"),
-          num: []
+          num: [2,2,8]
         },
         {
           title: "学生人数",
           img: require("@/assets/img/pandect/num-icon3.png"),
-          num: []
+          num: [3,3,7,8]
         },
         {
           title: "班级数",
           img: require("@/assets/img/pandect/num-icon4.png"),
-          num: []
+          num: [4,9]
         }
       ],
       // 门禁
       access: {
-        series: Object.assign({}, pieSeriesStyle, {
-          center: ["50%", "50%"],
-          radius: ["30%", "60%"],
-          roseType: "radius",
-          label: {
-            padding: [0, -100, 20, -100],
-            textStyle: {fontSize: this.echartsSize(14)},
-            formatter: params => {
-              return `${params.name}  ${params.percent}%`;
-            }
-          },
-          data: []
-        })
+        series:[
+          {
+            center: ["50%", "50%"],
+            radius: ["30%", "60%"],
+            roseType: "radius",
+            label: {
+              padding: [0, -100, 20, -100],
+              textStyle: {fontSize: this.echartsSize(14)},
+              formatter: params => {
+                return `${params.name}  ${params.percent}%`;
+              }
+            },
+            data: []
+          }
+        ],
       },
       // 平安校园
       campus: [],
@@ -308,66 +301,66 @@ export default {
       //消费
       consumptionTime: '',
       consumptionData: {
-        legend: Object.assign({}, pieLegendStyle, {
-          show: false
-        }),
-        series: Object.assign({}, pieSeriesStyle, {
-          center: ["50%", "50%"],
-          radius: ["40%", "50%"],
-          labelLine: {
-            normal: {
-              length: this.echartsSize(10),
-              length2: this.echartsSize(100),
-              lineStyle: {
-                width:this.echartsSize(2),
-                color: "#48476A"
-              }
-            }
-          },
-          label: {
-            normal: {
-              formatter: params => {
-                return (
-                  "{a| " +
-                  params.name +
-                  "}" +
-                  "\n" +
-                  "{b| " +
-                  formatNumUnit(params.value) +
-                  "次}" +
-                  "{c|" +
-                  " " +
-                  params.percent +
-                  "%}"
-                );
-              },
-              borderWidth: 0,
-              borderRadius: 4,
-              padding: [0, -this.echartsSize(100), this.echartsSize(30), -this.echartsSize(100)],
-              height: this.echartsSize(50),
-              fontSize: 14,
-              color: "#3494BD",
-              rich: {
-                a: {
-                  fontSize: this.echartsSize(12),
-                  lineHeight: this.echartsSize(20),
-                  color: "#FFA366",
-                },
-                b: {
-                  fontSize: this.echartsSize(12),
-                  lineHeight: this.echartsSize(20),
-                  color: "#FFA366"
-                },
-                c: {
-                  fontSize: this.echartsSize(12),
-                  lineHeight: this.echartsSize(20),
-                  color: "#FFA366"
+        legend:{ show: false},
+        series:[
+          {
+            center: ["50%", "50%"],
+            radius: ["40%", "50%"],
+            labelLine: {
+              normal: {
+                length: this.echartsSize(10),
+                length2: this.echartsSize(100),
+                lineStyle: {
+                  width:this.echartsSize(2),
+                  color: "#48476A"
                 }
               }
-            }
-          },
-          data: []
-        })
+            },
+            label: {
+              normal: {
+                formatter: params => {
+                  return (
+                    "{a| " +
+                    params.name +
+                    "}" +
+                    "\n" +
+                    "{b| " +
+                    params.value +
+                    "次}" +
+                    "{c|" +
+                    " " +
+                    params.percent +
+                    "%}"
+                  );
+                },
+                borderWidth: 0,
+                borderRadius: 4,
+                padding: [0, -this.echartsSize(100), this.echartsSize(30), -this.echartsSize(100)],
+                height: this.echartsSize(50),
+                fontSize: 14,
+                color: "#3494BD",
+                rich: {
+                  a: {
+                    fontSize: this.echartsSize(12),
+                    lineHeight: this.echartsSize(20),
+                    color: "#FFA366",
+                  },
+                  b: {
+                    fontSize: this.echartsSize(12),
+                    lineHeight: this.echartsSize(20),
+                    color: "#FFA366"
+                  },
+                  c: {
+                    fontSize: this.echartsSize(12),
+                    lineHeight: this.echartsSize(20),
+                    color: "#FFA366"
+                  }
+                }
+              }
+            },
+            data: []
+          }
+        ],
       },
       money: "",
       consumptionTimeNum:""
@@ -421,32 +414,13 @@ export default {
         ]
          this.campus = [videoLists];
          this.videoList.push(...videoLists);
-         console.log(this.campus)
     },
     initData() {
-      this.getEquipmentTypeData()
-      this.getEquipmentOnlineData()
       this.getAccessData()
-    },
-
-    getEquipmentOnlineData() {
-      const params = {
-        areaId: 510000,
-        areaLevel: 1
-      }
-      const equipmentOnline = [
-        { name: "设备在线", itemStyle: { color: "#07D68C" }, value: 609 },
-        { name: "设备离线", itemStyle: { color: "#6699FF" }, value: 30 },
-        { name: "设备故障", itemStyle: { color: "#FD5A93" }, value: 0 }               // 后台没有故障数据，前端写死为0
-      ]
-      for (const k of equipmentOnline) {
-        this.equipmentOnline.series.data.push(k)
-      }
-      this.equipmentTotal = data.total
     },
     // 门禁
     getAccessData() {
-      this.access.series.data =  [
+      this.access.series[0].data =  [
         { name: "正常通过", itemStyle: { color: "#07D68C" }, value: 114941 },
         { name: "异常报警", itemStyle: { color: "#FEBC31" }, value:21007 }
       ]
@@ -455,64 +429,35 @@ export default {
       this.$axios.get(pandectUrl).then(res=>{
         if(res.status===200){
           const result = res.data
-          const equipmentOnlineColor = [
-            { name: "设备在线", itemStyle: { color: "#07D68C" } },
-            { name: "设备离线", itemStyle: { color: "#6699FF" } },
-            { name: "设备故障", itemStyle: { color: "#FD5A93" } }
-          ];
-          let onlineTotal=0
-          for (const v of result.equipmentOnline) {
-            onlineTotal+= v.value
-            for (const k of equipmentOnlineColor) {
-              if (v.name === k.name) {
-                this.equipmentOnline.series.data.push(Object.assign({}, v, k));
-              }
-            }
-          }
-          this.equipmentTotal = onlineTotal
-          for (const v of result.totalNum) {
-            for (const k of this.totalNum) {
-              if (v.name === k.title) {
-                k.num = v.value.split("");
-              }
-            }
-          }
-            const accessColor = [
-              { name: "正常通过", itemStyle: { color: "#07D68C" } },
-              { name: "异常报警", itemStyle: { color: "#FEBC31" } }
-            ];
-            for (const v of result.access) {
-              for (const k of accessColor) {
-                if (v.name === k.name) {
-                  this.access.series.data.push(Object.assign({}, v, k));
-                }
-              }
-            }
-          const consumptionDataColor = [
+
+          this.equipmentOnline.series[0].data = [
+            { name: "设备在线", itemStyle: { color: "#07D68C" }, value: 609 },
+            { name: "设备离线", itemStyle: { color: "#6699FF" }, value: 30 },
+            { name: "设备故障", itemStyle: { color: "#FD5A93" }, value: 0 }
+          ]
+          this.equipmentTotal = 639
+          this.access.series[0].data = [
+            { name: "正常通过", itemStyle: { color: "#07D68C" }, value: 12021 },
+            { name: "异常报警", itemStyle: { color: "#FEBC31" },value: 3333 }
+            ]
+          this.consumptionData.series[0].data = [
             {
               name: "初一",
-              itemStyle: { color: "#FEBC31" }
+              itemStyle: { color: "#FEBC31" },
+              value: 521
             },
             {
               name: "初二",
-              itemStyle: { color: "#457DFD" }
+              itemStyle: { color: "#457DFD" },
+              value: 622
             },
             {
               name: "初三",
-              itemStyle: { color: "#FD5A93" }
+              itemStyle: { color: "#FD5A93" },
+              value: 777
             }
-          ];
-          this.consumptionTime = result.consumptionData.time
-          this.consumptionData.series.data = []
-          for (const v of result.consumptionData.times) {
-            for (const k of consumptionDataColor) {
-              if (v.name === k.name) {
-                this.consumptionData.series.data.push(
-                  Object.assign({}, v, k)
-                );
-              }
-            }
-          }
+          ]
+
           for (const v of result.equipmentOType) {
             for (const k of this.equipmentOType) {
               if (v.name === k.name) {
@@ -522,7 +467,7 @@ export default {
           }
           this.campus = result.campus;
           this.money = result.consumptionData.money
-          this.consumptionTimeNum = result.consumptionData.consumptionTimeNum
+          this.consumptionTimeNum = 1212
           // 摄像头id
           this.cameraInfo = result.cameraInfo
 
