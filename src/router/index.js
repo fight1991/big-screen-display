@@ -3,7 +3,6 @@ import Router from "vue-router";
 
 const home = () => import("@/views/home/index.vue");
 const pandect = () => import("@/views/pandect/index.vue");
-const login = () => import("@/views/login/index.vue");
 
 Vue.use(Router);
 
@@ -14,7 +13,7 @@ export default new Router({
       path: "/",
       name: "home",
       component: home,
-      redirect: "/login",
+      redirect: '/home/pandect',
       children: [
         {
           path: "/home/pandect",
@@ -23,12 +22,6 @@ export default new Router({
           component: pandect,
         },
       ],
-    },
-    {
-      path: "/login",
-      name: "login",
-      meta: { name: "登录" },
-      component: login,
     },
   ],
 });

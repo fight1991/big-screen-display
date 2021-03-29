@@ -2,41 +2,35 @@
   <div class="pandect">
     <div class="top-row">
       <!-- 设备在线率 -->
-      <div class="equipmentOnline wrap">
-        <div class="jiao left-top"></div>
-        <div class="jiao right-bottom"></div>
-        <div class="wrap-title wrap-title18">设备在线率</div>
+      <border-box title="设备在线率" class="equipmentOnline wrap">
         <div class="wrap-content">
-          <div class="equipmentTotal">
+          <div class="equipment-total">
             <div>292</div>
             <div>设备总数</div>
           </div>
-          <chartPie :idName="'equipmentOnline'" :optionData="equipmentOnline" />
+          <chart-pie :optionData="equipmentOnline" />
         </div>
-      </div>
+      </border-box>
       <!-- 人员统计 -->
       <div class="awards">
-        <div class="awards-details person-details">
-          <div v-for="(item,index) in totalNum" :key="index">
-            <p>{{item.title}}</p>
-            <div>
-              <img :src="item.img" />
+        <div class="awards-details ">
+          <div class="awards-item" v-for="(item,index) in totalNum" :key="index">
+            <p class="award-title">{{item.title}}</p>
+            <div class="award-content">
+              <img class="award-icon" :src="item.img" />
               <span
                 class="awards-times"
                 v-for="(i,index) in item.num"
                 :key="index"
               >{{item.num[index]}}</span>
-              <span v-show="item.title !== '班级数'">人</span>
+              <span class="award-unit" v-show="item.title !== '班级数'">人</span>
             </div>
           </div>
         </div>
       </div>
       <!-- 门禁 -->
-      <div class="access wrap">
-        <div class="jiao left-top"></div>
-        <div class="jiao right-bottom"></div>
-        <div class="wrap-title">校园门禁</div>
-        <div class="wrap-content">
+      <border-box class="access wrap" title="校园门禁">
+          <div class="wrap-content">
           <div class="access-statistics">
             <div class="access-statistics-item">
               <div
@@ -53,9 +47,9 @@
               <div>异常报警次数</div>
             </div>
           </div>
-          <chartPie class="access-chartPie" :idName="'access'" :optionData="access" />
+          <chart-pie class="access-chartPie" :idName="'access'" :optionData="access" />
         </div>
-      </div>
+      </border-box> 
     </div>
     <div class="pandect-two">
       <div>
@@ -83,17 +77,16 @@
           <div class="wrap-content">
             <div class="left-content">
               <div>
-                <p>{{consumptionTime}}月消费金额</p>
+                <p>月消费金额</p>
                 <p>
-<!--                  <span>{{ money }}</span>-->
-                  <span>{{ formatMoney }}</span>
-                  <span class="times">{{money>100000?'万元':'元'}}</span>
+                  <span>723.98</span>
+                  <span class="times">万元</span>
                 </p>
               </div>
               <div>
-                <p>{{consumptionTime}}月消费次数</p>
+                <p>月消费次数</p>
                 <p>
-                  <span>{{consumptionTimeNum}}</span>
+                  <span>1212</span>
                   <span class="times">次</span>
                 </p>
               </div>
@@ -113,71 +106,38 @@
           <div class="wrap-title">平安校园</div>
           <div class="wrap-content">
             <el-carousel arrow="never">
-              <el-carousel-item
-                v-for="(item, index) in campus"
-                :key="'campus'+index"
-                class="campus-item"
-              >
-                <div v-for="(v, i) in item" :key="'campus-item'+i">
+              <el-carousel-item class="campus-item" >
+                <div v-for="(v, i) in campus" :key="'campus-item'+i">
                   <div class="campus-name">
                     <img src="../../assets/img/pandect/camera-icon1.png" />
                     <span>{{v.name}}</span>
                     <img src="../../assets/img/pandect/camera-icon2.png" />
                   </div>
                   <div class="campus-url">
-                   <video
-                     style="width: 100%;height: 100%;"
-                     class="videoElement"
-                     autoplay
-                     muted
-                     constrols
-                     :poster = "v.poster"
-                     :src="v.url"
-                     ></video>
-                    <!-- <FlvPlayer :source="v" :sourceSrc="v.url"/> -->
+                    <img class="videoElement" :src="v.poster" alt="">
                   </div>
                 </div>
               </el-carousel-item>
             </el-carousel>
-            <!-- <video style="width: 100%;height: 100%;" class="videoElement" id="videoElement" controls></video> -->
           </div>
         </div>
       </div>
     </div>
-    <div class="school"></div>
+    <!-- <div class="school"></div> -->
   </div>
 </template>
 
 <script>
 import chartPie from "@/components/common-chart-pie";
-import {pandectUrl, pandectEquipmentTypeUrl, pandectEquipmentOnlineUrl, pandectAccessUrl} from '@/assets/js/json.path'
-import FlvPlayer from '@/components/flv-player'
-import {getCamera} from '../../api/apis'
-import {formatNumUnit} from '@/assets/js/util'
+import borderBox from '@/components/border-box'
+
 export default {
   name: "pandect",
   components: {
-    chartPie, FlvPlayer
-  },
-  computed:{
-    formatMoney(){
-      let money = this.money *1
-      if(money>100000){
-        return (money/10000).toFixed(2)
-      }else{
-        return money
-      }
-    }
+    chartPie, borderBox
   },
   data() {
     return {
-      flvjs: {},
-      videoOptions1: [
-        {
-          type: "application/x-mpegURL",
-          src: ""
-        }
-      ],
       // 设备在线率
       equipmentOnline: {
         legend: {
@@ -217,10 +177,13 @@ export default {
           labelLine:{
             show:false,
           },
-          data: []
+          data: [
+            { name: "设备在线", itemStyle: { color: "#07D68C" }, value: 609 },
+            { name: "设备离线", itemStyle: { color: "#6699FF" }, value: 30 },
+            { name: "设备故障", itemStyle: { color: "#FD5A93" }, value: 0 }
+          ]
         }]
       },
-      equipmentTotal: 0,
       // 人员统计
       totalNum: [
         {
@@ -246,6 +209,7 @@ export default {
       ],
       // 门禁
       access: {
+        
         series:[
           {
             center: ["50%", "50%"],
@@ -258,48 +222,81 @@ export default {
                 return `${params.name}  ${params.percent}%`;
               }
             },
-            data: []
+            data: [
+              { name: "正常通过", itemStyle: { color: "#07D68C" }, value: 114941 },
+              { name: "异常报警", itemStyle: { color: "#FEBC31" }, value:21007 }
+            ]
           }
         ],
       },
       // 平安校园
-      campus: [],
-      videoList: [],
+      campus: [
+         {
+            name: '周界西北',
+            url: `1.mp4`,
+            poster: require('../../assets/img/pandect/camera.png'),
+            id: 1,
+          },{
+            name: '周界东南',
+            url: `2.mp4`,
+            poster: require('../../assets/img/pandect/camera.png'),
+            id: 1,
+          },{
+            name: '南门东北角',
+            url: `3.mp4`,
+            poster: require('../../assets/img/pandect/camera.png'),
+            id: 1,
+          },{
+            name: '足球场主席台',
+            url: `4.mp4`,
+            poster: require('../../assets/img/pandect/camera.png'),
+            id: 1,
+          },{
+            name: '西门东南角',
+            url: `5.mp4`,
+            poster: require('../../assets/img/pandect/camera.png'),
+            id: 1,
+          },{
+            name: '西门周界',
+            url: `1.mp4`,
+            poster: require('../../assets/img/pandect/camera.png'),
+            id: 1,
+          }
+      ],
       //设备类型
       equipmentOType: [
         {
           name: "一体机",
           img: require("@/assets/img/pandect/type-icon1.png"),
-          num: 0
+          num: 54
         },
         {
           name: "智慧黑板",
           img:require("@/assets/img/pandect/type-icon4.png"),
-          num: 0
+          num: 52
         },
         {
           name: "电子班牌",
           img: require("@/assets/img/pandect/type-icon3.png"),
-          num: 0
+          num: 129
         },
         {
           name: "摄像头",
           img: require("@/assets/img/pandect/type-icon2.png"),
-          num: 0
+          num: 369
         },
         {
           name: "消费机",
           img: require("@/assets/img/pandect/type-icon5.png"),
-          num: 0
+          num: 31
         },
         {
           name: "录播教室",
           img: require("@/assets/img/pandect/type-icon6.png"),
-          num: 0
+          num: 12
         }
       ],
       //消费
-      consumptionTime: '',
       consumptionData: {
         legend:{ show: false},
         series:[
@@ -320,21 +317,9 @@ export default {
               normal: {
                 formatter: params => {
                   return (
-                    "{a| " +
-                    params.name +
-                    "}" +
-                    "\n" +
-                    "{b| " +
-                    params.value +
-                    "次}" +
-                    "{c|" +
-                    " " +
-                    params.percent +
-                    "%}"
+                    `{a|${params.name }} \n {b|${params.value} 次} {c|${params.percent }%}`
                   );
                 },
-                borderWidth: 0,
-                borderRadius: 4,
                 padding: [0, -this.echartsSize(100), this.echartsSize(30), -this.echartsSize(100)],
                 height: this.echartsSize(50),
                 fontSize: 14,
@@ -358,90 +343,8 @@ export default {
                 }
               }
             },
-            data: []
-          }
-        ],
-      },
-      money: "",
-      consumptionTimeNum:""
-    };
-  },
-  created() {
-    this.generateData()
-  },
-  methods: {
-    getVideoLists() {
-      this.videoList = []
-      let cameraId= this.cameraInfo.idLists
-      if(cameraId.length<=0) return;
-      let params = "";
-      cameraId.forEach(item => {
-        params += `&cmdbid[]=${item}`;
-      });
-        let mp4Base = 'http://116.62.125.88:10000/video/'
-        let videoLists = [
-          {
-            name: '周界西北',
-            url: `${mp4Base}/1.mp4`,
-            poster: require('../../assets/img/pandect/4800.png'),
-            id: 1,
-          },{
-            name: '周界东南',
-            url: `${mp4Base}/2.mp4`,
-            poster: require('../../assets/img/pandect/4799.png'),
-            id: 1,
-          },{
-            name: '南门东北角',
-            url: `${mp4Base}/3.mp4`,
-            poster: require('../../assets/img/pandect/4574.png'),
-            id: 1,
-          },{
-            name: '足球场主席台',
-            url: `${mp4Base}/4.mp4`,
-            poster: require('../../assets/img/pandect/4123.png'),
-            id: 1,
-          },{
-            name: '西门东南角',
-            url: `${mp4Base}/5.mp4`,
-            poster: require('../../assets/img/pandect/5101.png'),
-            id: 1,
-          },{
-            name: '西门周界',
-            url: `${mp4Base}/1.mp4`,
-            poster: require('../../assets/img/pandect/4800.png'),
-            id: 1,
-          }
-        ]
-         this.campus = [videoLists];
-         this.videoList.push(...videoLists);
-    },
-    initData() {
-      this.getAccessData()
-    },
-    // 门禁
-    getAccessData() {
-      this.access.series[0].data =  [
-        { name: "正常通过", itemStyle: { color: "#07D68C" }, value: 114941 },
-        { name: "异常报警", itemStyle: { color: "#FEBC31" }, value:21007 }
-      ]
-    },
-    generateData(){
-      this.$axios.get(pandectUrl).then(res=>{
-        if(res.status===200){
-          const result = res.data
-
-          this.equipmentOnline.series[0].data = [
-            { name: "设备在线", itemStyle: { color: "#07D68C" }, value: 609 },
-            { name: "设备离线", itemStyle: { color: "#6699FF" }, value: 30 },
-            { name: "设备故障", itemStyle: { color: "#FD5A93" }, value: 0 }
-          ]
-          this.equipmentTotal = 639
-          this.access.series[0].data = [
-            { name: "正常通过", itemStyle: { color: "#07D68C" }, value: 12021 },
-            { name: "异常报警", itemStyle: { color: "#FEBC31" },value: 3333 }
-            ]
-          this.consumptionData.series[0].data = [
-            {
+            data: [
+               {
               name: "初一",
               itemStyle: { color: "#FEBC31" },
               value: 521
@@ -456,29 +359,13 @@ export default {
               itemStyle: { color: "#FD5A93" },
               value: 777
             }
-          ]
-
-          for (const v of result.equipmentOType) {
-            for (const k of this.equipmentOType) {
-              if (v.name === k.name) {
-                k.num = v.num;
-              }
-            }
+            ]
           }
-          this.campus = result.campus;
-          this.money = result.consumptionData.money
-          this.consumptionTimeNum = 1212
-          // 摄像头id
-          this.cameraInfo = result.cameraInfo
-
-        }
-      }).then(()=>{
-        this.getVideoLists()
-      }).catch(err=>{
-        console.log('总览请求错误',err)
-      })
-    }
-  }
+        ],
+      },
+    };
+  },
+  methods: {}
 };
 </script>
 
