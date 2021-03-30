@@ -1,5 +1,5 @@
 <template>
-  <div :id="idName" class="chartPie"></div>
+  <div  class="chartPie"></div>
 </template>
 
 <script>
@@ -7,7 +7,6 @@ import {merge} from 'lodash-es'
 
 export default {
   props: {
-    idName: String,
     optionData: Object
   },
   data() {
@@ -76,9 +75,7 @@ export default {
   methods: {
     renderChart() {
       let option = merge({},this.option, this.optionData)
-      console.log(option)
-      // option.series[0].label = {show:false}
-      this.myChart = this.$echarts.init(document.getElementById(this.idName));
+      this.myChart = this.$echarts.init(this.$el);
       this.myChart.setOption(option);
       window.addEventListener("resize", () => {
         this.myChart.resize();
