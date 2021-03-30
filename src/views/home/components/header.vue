@@ -14,14 +14,10 @@
         >{{item.name}}</div>
       </div>
     </div>
-    <div class="header-center">{{systemName}}</div>
+    <div class="header-center">某某大数据看板</div>
     <div class="header-right">
       <div class="header-top">
-        <div class="time-box"><span class="time-item">{{date}}</span> <span class="time-item">{{time}}</span> <span class="time-item">{{week}}</span></div>
-        <div class="logo-out" @click="logout">
-          <span>【演示账号】 退出</span>
-          <img class="log-out-ico" src="../../../assets/img/public/log-out.png" alt="logout">
-        </div>
+        <div class="time-box"><span class="time-item">{{dateNow}}</span> <span class="time-item">{{dateTimeNow}}</span> <span class="time-item">{{weekDay}}</span></div>
       </div>
       <div class="header-nav">
         <div :class="['nav-item', item.name===currentNav?'active':'']"
@@ -34,19 +30,13 @@
 </template>
 
 <script>
-  import {systemLogin} from "../../../assets/js/json.path";
-  import {setDocumentTitle} from "../../../assets/js/util";
-
+  import moment from 'moment'
   export default {
     name: "HeaderNav",
     data(){
       return{
         timer:null,
-        time:'',
-        date:'',
-        week:'',
         currentNav: '',
-        systemName:'校长AI助手',
         navLeft:[
           {name: '总览', routeName: 'pandect'},
           {name: '教育教学', routeName: 'pandect'},
@@ -59,81 +49,25 @@
           {name: '网络大数据', routeName: 'pandect'},
           {name: '装备大数据', routeName: 'pandect'},
         ],
-        day: [
-          { id: 0, name: "星期日" },
-          { id: 1, name: "星期一" },
-          { id: 2, name: "星期二" },
-          { id: 3, name: "星期三" },
-          { id: 4, name: "星期四" },
-          { id: 5, name: "星期五" },
-          { id: 6, name: "星期六" }
-        ],
+        dateTimeNow:'',
+        dateNow: '',
+        weekDay:'',
       }
     },
     methods:{
-      add0(val) {
-        if (val < 10) {
-          return "0" + val;
-        } else {
-          return val;
-        }
-      },
+     
       renderClock(){
+        this.dateNow = moment().format('yyyy年MM月DD日')
+        this.weekDay = moment().format('dddd')
         this.timer = setInterval(() => {
-          let date = new Date();
-          let year = date.getFullYear();
-          let month = date.getMonth() + 1;
-          let day = date.getDate();
-          let week = date.getDay();
-          let hour = date.getHours();
-          let minute = date.getMinutes();
-          let second = date.getSeconds();
-          this.time = `${this.add0(hour)}:${this.add0(minute)}:${this.add0(
-            second
-          )}`;
-          this.date = `${year}年${this.add0(month)}月${this.add0(day)}日`;
-          for (let key in this.day) {
-            if (this.day[key].id === week) {
-              this.week = this.day[key].name;
-            }
-          }
+          let dateTimeNow = moment().format('HH:MM:SS')
+          this.dateTimeNow = dateTimeNow
         }, 1000);
       },
-      toggleRoute(nav){
-        if(!nav) return;
-        if(typeof nav== 'string'){
-          this.currentNav = nav
-        }else{
-          const {routeName,name} = nav
-          if(!routeName || this.$route.name===routeName) return
-          this.$router.push({
-            name: routeName
-          })
-          this.currentNav = name
-        }
-      },
-      logout(){
-        this.$router.push({ name: "login" });
-      }
+     
     },
     mounted(){
-      this.systemName=localStorage.systemName
       this.renderClock()
-      if(this.$route.meta){
-        this.toggleRoute(this.$route.meta.name)
-      }
-    },
-    created(){
-      this.$axios.get(systemLogin).then(res=>{
-        if(res.status===200){
-          const data = res.data
-          let systemName = data.systemName
-          localStorage.systemName=systemName
-          this.systemName = systemName
-          setDocumentTitle(systemName)
-
-        }
-      })
     },
     deactivated() {
       clearInterval(this.timer);
