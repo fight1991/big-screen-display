@@ -77,42 +77,12 @@
     background: rgba(0, 0, 0, 0.2);
     border-radius: 8px;
     box-sizing: border-box;
-    .jiao {
-      position: absolute;
-      width: 18px;
-      height: 18px;
-      border: 2px solid;
-      &.left-top {
-        left: -1px;
-        top: -2px;
-        border-color: #48476a transparent transparent #48476a;
-      }
-      &.right-bottom {
-        right: -1px;
-        bottom: -2px;
-        border-color: transparent #48476a #48476a transparent;
-      }
-    }
-    .wrap-title {
-      height: 20px;
-      line-height: 20px;
-      font-size: 20px;
-      &.wrap-title18 {
-        height: 18px;
-        line-height: 18px;
-        font-size: 18px;
-      }
-    }
     .wrap-content {
       position: relative;
       height: calc(100% - 18px);
-      .wrap-content20 {
-        height: calc(100% - 20px);
-      }
     }
   }
   .equipmentOnline {
-    // border: 1px solid rgba(72, 71, 106, 1);
     .equipment-total {
       position: absolute;
       top: 36%;
@@ -219,9 +189,6 @@
           border-radius: 5px;
           background: rgba(69, 77, 156, 0.2);
           border: 2px solid rgba(69, 77, 156, 1);
-          &:nth-child(2n) {
-            // margin-left: 20px;
-          }
         }
         .campus-name {
           display: flex;
