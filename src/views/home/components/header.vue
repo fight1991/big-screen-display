@@ -2,9 +2,11 @@
   <div class="header">
     <div class="header-left">
       <div class="header-top">
-        <img class="header-logo2" src="../../../assets/img/public/china-mobile.png" alt="logo">
-<!--        <div class="school-title"></div>-->
-        <div class="school-title">xx实验中学</div>
+        <div class="temperature-box">
+         <img class="temperature-ico" src="../../../assets/img/public/temp.png" alt="temp">
+          <span>18-25℃</span>
+        </div>
+        <div class="school-title">茶阿二中</div>
       </div>
       <div class="header-nav">
         <div :class="['nav-item', item.name===currentNav?'active':'']"
@@ -40,12 +42,8 @@
         navLeft:[
           {name: '总览', routeName: 'pandect'},
           {name: '教育教学', routeName: 'pandect'},
-          {name: '教学管理', routeName: 'pandect'},
-          {name: '学生画像', routeName: 'pandect'},
-          {name: '活动轨迹',routeName: 'pandect'},
         ],
         navRight:[
-          {name: '光荣榜', routeName: 'pandect'},
           {name: '网络大数据', routeName: 'pandect'},
           {name: '装备大数据', routeName: 'pandect'},
         ],
@@ -55,12 +53,11 @@
       }
     },
     methods:{
-     
       renderClock(){
         this.dateNow = moment().format('yyyy年MM月DD日')
         this.weekDay = moment().format('dddd')
         this.timer = setInterval(() => {
-          let dateTimeNow = moment().format('HH:MM:SS')
+          let dateTimeNow = moment().format('HH:mm:ss')
           this.dateTimeNow = dateTimeNow
         }, 1000);
       },
@@ -80,7 +77,6 @@
   .header-nav{
     display: flex;
     margin-top: 8px;
-
     .nav-item{
       font-size:18px;
       color:rgba(168,173,201,1);
@@ -138,7 +134,6 @@
     left: 50%;
     right: 0;
     z-index: 999;
-    /*width: 19.2rem;*/
     width:100%;
 transform:translateX(-50%);
     .header-top{
@@ -146,27 +141,25 @@ transform:translateX(-50%);
       color:rgba(168,173,201,1);
       display: flex;
     }
-    .header-logo{
-      width: 52px;
-      align-self: flex-start;
-      margin-right: 10px;
-    }
-    .header-logo2{
-      height: 40px;
-    }
-
   }
   .header-left{
     flex: 1 0 0;
+     .temperature-box{
+      margin-right: 10px;
+      display: flex;
+      align-items: center;
+      .temperature-ico{
+        width: 30px;
+        margin-right: 10px;
+        display: block;
+      }
+    }
     .school-title{
-      line-height: 40px;
       margin-left: 30px;
       font-size:22px;
       color: #A8ADC9;
     }
     .header-nav{
-      /*width: 580px;*/
-      /*width: 30.8%;*/
       height: 42px;
       line-height: 42px;
       display: flex;
@@ -195,34 +188,7 @@ transform:translateX(-50%);
       justify-content: flex-end;
       font-size: 20px;
     }
-    .temperature-box{
-      margin-right: 20px;
-      display: flex;
-      .temperature-ico{
-        width: 28px;
-        margin-right: 10px;
-        display: block;
-      }
-    }
-    .time-box{
-      .time-item{}
-      margin-right: 10px;
-    }
-    .logo-out{
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      .log-out-ico{
-        width: 20px;
-        height: 20px;
-        display: block;
-        cursor: pointer;
-        margin-left: 6px;
-      }
-    }
-
     .header-nav{
-      /*width: 580px;*/
       height: 42px;
       line-height: 42px;
       display: flex;
