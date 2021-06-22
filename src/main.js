@@ -9,10 +9,14 @@ import "./assets/css/index.scss";
 import vueSeamlessScroll from "vue-seamless-scroll";
 import axios from 'axios';
 import {echartsSize} from './assets/js/util.js'
+import dataV from '@jiaminghi/data-view'
+
 Vue.prototype.$echarts = echarts;
 Vue.prototype.$moment = moment;
 Vue.prototype.$axios = axios;
 Vue.use(vueSeamlessScroll);
+Vue.use(dataV);
+
 
 Vue.config.productionTip = false;
 Vue.prototype.echartsSize = echartsSize;

@@ -19,14 +19,6 @@
       return{
         timer:null,
         currentNav: '',
-        navLeft:[
-          {name: '总览', routeName: 'pandect'},
-          {name: '教育教学', routeName: 'pandect'},
-        ],
-        navRight:[
-          {name: '网络大数据', routeName: 'pandect'},
-          {name: '装备大数据', routeName: 'pandect'},
-        ],
         dateTimeNow:'',
         dateNow: '',
         weekDay:'',
@@ -57,50 +49,6 @@
   .header-nav{
     display: flex;
     margin-top: 8px;
-    .nav-item{
-      font-size:18px;
-      color:rgba(168,173,201,1);
-      flex: 1 0 0;
-      text-align: center;
-      position: relative;
-      user-select: none;
-      cursor: pointer;
-      &:before{
-        content: "";
-        height: 4px;
-        background: #5C58DD;
-        border-radius: 4px;
-        position: absolute;
-        bottom: -2px;
-        left: 50%;
-        transform: translateX(-50%);
-        opacity: 0;
-        width: 0;
-        transition: all ease .2s;
-      }
-      &.active{
-        position: relative;
-        color: #FFFFFF;
-        &:before{
-          width: 42px;
-          opacity: 1;
-        }
-      }
-      &:after{
-        content: "|";
-        font-size: 14px;
-        opacity:1;
-        position: absolute;
-        right: 0;
-        top: 50%;
-        transform: translateY(-50%);
-      }
-      &:last-child{
-        &:after{
-          display: none;
-        }
-      }
-    }
   }
   .header{
     width: 100%;
@@ -127,27 +75,6 @@
   }
   .header-left{
     flex: 1 0 0;
-     .temperature-box{
-      margin-right: 10px;
-      display: flex;
-      align-items: center;
-      .temperature-ico{
-        width: 30px;
-        margin-right: 10px;
-        display: block;
-      }
-    }
-    .school-title{
-      margin-left: 30px;
-      font-size:22px;
-      color: #A8ADC9;
-    }
-    .header-nav{
-      height: 42px;
-      line-height: 42px;
-      display: flex;
-      @include background-fill("../../../assets/img/public/nav_left.png");
-    }
   }
 
   .header-center{

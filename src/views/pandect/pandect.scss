@@ -1,9 +1,18 @@
 .pandect {
   position: relative;
-  background: url("../../assets/img/pandect/bg.png") no-repeat;
-  background-size: 1200px 675px;
-  background-position: center bottom;
+  display: flex;
   height: 100%;
+  .center {
+    width: 650px;
+  }
+  .left,
+  .right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
   .top-row {
     position: relative;
     display: flex;

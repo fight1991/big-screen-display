@@ -1,7 +1,17 @@
 <template>
   <div class="pandect">
-    <div class="top-row">
-      <!-- 设备在线率 -->
+    <div class="left">
+      <border-box title="近一周流量统计"></border-box>
+      <border-box title="交通指数排行"></border-box>
+      <border-box title="实时过车记录"></border-box>
+    </div>
+    <div class="center"></div>
+    <div class="right">
+      <border-box title="近一周违法统计"></border-box>
+      <border-box title="近一周违法排行"></border-box>
+      <border-box title="实时违法记录"></border-box>
+    </div>
+    <!-- <div class="top-row">
       <border-box title="设备在线率" class="equipmentOnline wrap">
         <div class="wrap-content">
           <div class="equipment-total">
@@ -11,7 +21,6 @@
           <chart-pie :optionData="equipmentOnline" />
         </div>
       </border-box>
-      <!-- 人员统计 -->
       <div class="awards">
         <div class="awards-details ">
           <div class="awards-item" v-for="(item,index) in totalNum" :key="index">
@@ -28,7 +37,6 @@
           </div>
         </div>
       </div>
-      <!-- 门禁 -->
       <border-box class="access wrap" title="校园门禁">
           <div class="wrap-content">
           <div class="access-statistics">
@@ -50,10 +58,9 @@
           <chart-pie class="access-chartPie" :idName="'access'" :optionData="access" />
         </div>
       </border-box> 
-    </div>
-    <div class="pandect-two">
+    </div> -->
+    <!-- <div class="pandect-two">
       <div>
-        <!-- 设备类型 -->
         <div class="equipmentType wrap">
           <div class="jiao left-top"></div>
           <div class="wrap-title">设备类型</div>
@@ -70,7 +77,6 @@
             </div>
           </div>
         </div>
-        <!-- 消费 -->
         <div class="consumption wrap">
           <div class="jiao left-top"></div>
           <div class="wrap-title">消费</div>
@@ -99,7 +105,6 @@
       </div>
       <div></div>
       <div>
-        <!-- 平安校园 -->
         <div class="campus wrap">
           <div class="jiao left-top"></div>
           <div class="jiao right-bottom"></div>
@@ -122,8 +127,7 @@
           </div>
         </div>
       </div>
-    </div>
-    <!-- <div class="school"></div> -->
+    </div> -->
   </div>
 </template>
 

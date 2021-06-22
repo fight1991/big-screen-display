@@ -4,7 +4,18 @@
     <div class="border-tr"></div>
     <div class="border-bl"></div>
     <div class="border-br"></div>
-    <div v-if="title" class="border-title">{{title}}</div>
+    <div class="border-title">
+      {{title}}
+      <!-- <div class="title-left title-item">
+        <dv-decoration-3 style="width:120px;height:30px;" />
+      </div>
+      <div class="title-center">
+        {{title}}
+      </div>
+      <div class="title-right title-item">
+        <dv-decoration-3 style="width:120px;height:30px;" />
+      </div> -->
+    </div>
     <slot></slot>
   </div>
 </template>
@@ -22,52 +33,59 @@
   .border-box{
     padding: 20px 30px;
     position: relative;
-    background:rgba(10,11,26,0.8);
-    .border-tl{
+    height: 300px;
+    box-sizing: border-box;
+    width: 100%;
+    border: 2px solid #007FFE;
+    .border-tl,
+    .border-br,
+    .border-tr,
+    .border-bl {
+      border: 2px solid #00E3FF;
       width: 31px;
       height: 31px;
-      border: 2px solid rgba(92,88,221,1);
+    }
+    .border-tl{
       border-right:0;
       border-bottom:0;
       position: absolute;
-      top:-1px;
-      left:-1px;
+      top:-2px;
+      left:-2px;
     }
     .border-tr{
-      width: 14px;
-      height: 14px;
-      border:2px solid rgba(92,88,221,1);
       opacity:1;
       border-left:0;
       border-bottom:0;
       position: absolute;
-      right:-1px;
-      top:-1px;
+      right:-2px;
+      top:-2px;
     }
     .border-bl{
-      width: 14px;
-      height: 14px;
-      border:2px solid rgba(92,88,221,1);
       opacity:1;
       border-right:0;
       border-top:0;
       position: absolute;
-      left:-1px;
-      bottom:-1px;
+      left:-2px;
+      bottom:-2px;
     }
     .border-br{
-      width: 31px;
-      height: 31px;
-      border: 2px solid rgba(92,88,221,1);
       border-left:0;
       border-top:0;
       position: absolute;
-      bottom:-1px;
-      right:-1px;
+      bottom:-2px;
+      right:-2px;
     }
     .border-title{
       font-size:20px;
-      color: #A8ADC9;
+      color: #00E4FF;
+      display: flex;
+      justify-content: center;
+      background: url('../assets/img/pandect/box-title-bg.png') no-repeat center bottom;
+      background-size: 100% 31px;
+      height: 41px;
+      .title-center {
+        padding: 0 30px;
+      }
     }
   }
 </style>
