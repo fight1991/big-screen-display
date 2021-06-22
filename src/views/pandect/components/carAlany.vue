@@ -35,7 +35,7 @@ export default {
     justify-content: space-around;
     align-items: center;
     .chart {
-      width: 33%;
+      width: 50%;
       height: 100%;
     }
     .num {
