@@ -16,7 +16,9 @@
     <div class="center">
       <div class="center-top"></div>
       <div class="center-bottom">
-        <border-box title="车辆分析"></border-box>
+        <border-box title="车辆分析">
+          <carAlany></carAlany>
+        </border-box>
       </div>
     </div>
     <!-- 右边部分 -->
@@ -37,13 +39,13 @@
 <script>
 import borderBox from '@/components/border-box'
 
-import chartPie from "@/components/common-chart-pie";
 import chartBar from '@/components/common-chart-bar';
 import chartLine from '@/components/common-chart-line';
 
 import tranfic from './components/tranfic'
 import passNote from './components/passNote'
 import breakNote from './components/breakNote'
+import carAlany from './components/carAlany'
 
 import flowBar from './mixins/flowBar'
 import breakRules from './mixins/breakRules'
@@ -53,13 +55,13 @@ export default {
   name: "pandect",
   mixins: [flowBar, breakRules, breakBar],
   components: {
-    chartPie,
     borderBox,
     chartBar,
     chartLine,
     tranfic,
     passNote,
-    breakNote
+    breakNote,
+    carAlany
   },
   data() {
     return {
