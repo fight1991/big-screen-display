@@ -19,10 +19,10 @@ export default {
               opacity: 0.1,
               color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
                 offset: 0,
-                color: '#00FFEA'
+                color: '#00FCFF'
               }, {
                 offset: 1,
-                color: 'transparent'
+                color: '#020D32'
               }])
             }
         }]
