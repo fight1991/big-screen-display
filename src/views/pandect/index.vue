@@ -1,15 +1,27 @@
 <template>
   <div class="pandect">
     <div class="left">
-      <border-box title="近一周流量统计"></border-box>
-      <border-box title="交通指数排行"></border-box>
-      <border-box title="实时过车记录"></border-box>
+      <border-box title="近一周流量统计">
+        <chart-bar idName="flowChartBar" :optionData="flowBarOps"></chart-bar>
+      </border-box>
+      <border-box title="交通指数排行">
+        <tranfic></tranfic>
+      </border-box>
+      <border-box title="实时过车记录">
+        <pass-note></pass-note>
+      </border-box>
     </div>
     <div class="center"></div>
     <div class="right">
-      <border-box title="近一周违法统计"></border-box>
-      <border-box title="近一周违法排行"></border-box>
-      <border-box title="实时违法记录"></border-box>
+      <border-box title="近一周违法统计">
+        <chart-line idName="breakRules" :optionData="breakOps"></chart-line>
+      </border-box>
+      <border-box title="近一周违法排行">
+        <chart-bar idName="breakChartBar" :optionData="breakBarOps"></chart-bar>
+      </border-box>
+      <border-box title="实时违法记录">
+        <break-note></break-note>
+      </border-box>
     </div>
     <!-- <div class="top-row">
       <border-box title="设备在线率" class="equipmentOnline wrap">
@@ -132,13 +144,31 @@
 </template>
 
 <script>
-import chartPie from "@/components/common-chart-pie";
 import borderBox from '@/components/border-box'
+
+import chartPie from "@/components/common-chart-pie";
+import chartBar from '@/components/common-chart-bar';
+import chartLine from '@/components/common-chart-line';
+
+import tranfic from './components/tranfic'
+import passNote from './components/passNote'
+import breakNote from './components/breakNote'
+
+import flowBar from './mixins/flowBar'
+import breakRules from './mixins/breakRules'
+import breakBar from './mixins/breakBar'
 
 export default {
   name: "pandect",
+  mixins: [flowBar, breakRules, breakBar],
   components: {
-    chartPie, borderBox
+    chartPie,
+    borderBox,
+    chartBar,
+    chartLine,
+    tranfic,
+    passNote,
+    breakNote
   },
   data() {
     return {

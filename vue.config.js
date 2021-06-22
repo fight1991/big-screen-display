@@ -16,5 +16,9 @@ module.exports = {
     //     }
     //   }
     // },
+  },
+  configureWebpack: { // 配置webpack
+    externals: {
+    }
   }
 }

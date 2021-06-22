@@ -16,7 +16,9 @@
         <dv-decoration-3 style="width:120px;height:30px;" />
       </div> -->
     </div>
-    <slot></slot>
+    <div class="content-box">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
@@ -36,6 +38,8 @@
     height: 300px;
     box-sizing: border-box;
     width: 100%;
+    display: flex;
+    flex-direction: column;
     border: 2px solid #007FFE;
     .border-tl,
     .border-br,
@@ -74,6 +78,10 @@
       position: absolute;
       bottom:-2px;
       right:-2px;
+    }
+    .content-box {
+      flex: 1;
+      width: 100%;
     }
     .border-title{
       font-size:20px;
