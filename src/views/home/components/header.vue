@@ -1,32 +1,12 @@
 <template>
   <div class="header">
     <div class="header-left">
-      <div class="header-top">
-        <div class="temperature-box">
-         <img class="temperature-ico" src="../../../assets/img/public/temp.png" alt="temp">
-          <span>18-25℃</span>
-        </div>
-        <div class="school-title">茶阿二中</div>
-      </div>
-      <div class="header-nav">
-        <div :class="['nav-item', item.name===currentNav?'active':'']"
-             v-for="item in navLeft"
-             :key="item.name"
-             @click="toggleRoute(item)"
-        >{{item.name}}</div>
-      </div>
     </div>
-    <div class="header-center">某某大数据看板</div>
+    <div class="header-center">电动自行车一张网数据平台</div>
     <div class="header-right">
-      <div class="header-top">
-        <div class="time-box"><span class="time-item">{{dateNow}}</span> <span class="time-item">{{dateTimeNow}}</span> <span class="time-item">{{weekDay}}</span></div>
-      </div>
-      <div class="header-nav">
-        <div :class="['nav-item', item.name===currentNav?'active':'']"
-             v-for="item in navRight"
-             :key="item.name"
-             @click="toggleRoute(item)">{{item.name}}</div>
-      </div>
+      <span class="time-item">{{dateNow}}</span>
+      <span class="time-item">{{weekDay}}</span>
+      <span class="time-item">{{dateTimeNow}}</span>
     </div>
   </div>
 </template>
@@ -128,14 +108,17 @@
     height: 100px;
     display: flex;
     align-items: center;
+    background: url('../../../assets/img/pandect/head-bg.png') no-repeat center;
+    background-size: 100%;
     justify-content: space-between;
-   position: fixed;
+    position: fixed;
     top: 0;
     left: 50%;
     right: 0;
     z-index: 999;
     width:100%;
-transform:translateX(-50%);
+    color: #00FFFC;
+    transform:translateX(-50%);
     .header-top{
       font-size:22px;
       color:rgba(168,173,201,1);
@@ -170,29 +153,22 @@ transform:translateX(-50%);
   .header-center{
     font-size:32px;
     font-weight:400;
-    color:rgba(255,255,255,1);
-    padding-top: 27px;
+    padding-top: 20px;
     opacity:1;
     width: 703px;
     flex: 703px 0 0;
     height: 88px;
-    background: url("../../../assets/img/public/header_center.png") no-repeat center center;
-    background-size: 100% 100%;
     text-align: center;
     line-height: 1em;
   }
 
   .header-right{
     flex:  1 0 0;
-    .header-top{
-      justify-content: flex-end;
+    display: flex;
+    justify-content: center;
+    .time-item {
+      padding: 0 10px;
       font-size: 20px;
-    }
-    .header-nav{
-      height: 42px;
-      line-height: 42px;
-      display: flex;
-      @include background-fill("../../../assets/img/public/nav_right.png");
     }
   }
 
