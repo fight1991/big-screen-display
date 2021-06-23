@@ -14,7 +14,9 @@
     </div>
     <!-- 中间部分 -->
     <div class="center">
-      <div class="center-top"></div>
+      <div class="center-top">
+        <map-data></map-data>
+      </div>
       <div class="center-bottom">
         <border-box title="车辆分析">
           <carAlany></carAlany>
@@ -46,6 +48,7 @@ import tranfic from './components/tranfic'
 import passNote from './components/passNote'
 import breakNote from './components/breakNote'
 import carAlany from './components/carAlany'
+import mapData from './components/mapData'
 
 import flowBar from './mixins/flowBar'
 import breakRules from './mixins/breakRules'
@@ -61,7 +64,8 @@ export default {
     tranfic,
     passNote,
     breakNote,
-    carAlany
+    carAlany,
+    mapData
   },
   data() {
     return {
