@@ -1,5 +1,5 @@
 <template>
-<dv-scroll-board :config="config" style="width:100%;height:100%" />
+  <dv-scroll-board :config="config" style="width:100%;height:100%" />
 </template>
 <script>
 export default {
