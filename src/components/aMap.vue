@@ -12,7 +12,41 @@ export default {
     return {
       ak: 'ffa1527d9cf893866bc676b3c699049f',
       mapLoading: false,
-      mapId: '' // 地图容器 若id相同的话只渲染一次
+      mapId: '', // 地图容器 若id相同的话只渲染一次
+      staticPosition: [
+        {
+          pos: [120.305268,31.574875],
+          num: 12
+        },
+        {
+          pos: [120.317284,31.598564],
+          num: 123
+        },
+        {
+          pos: [120.272137,31.56727],
+          num: 123
+        },
+        {
+          pos: [120.314023,31.49133],
+          num: 1253
+        },
+        {
+          pos: [120.220018,31.653308],
+          num: 123
+        },
+        {
+          pos: [120.461666,31.48924],
+          num: 123
+        },
+        {
+          pos: [120.087164,31.426888],
+          num: 1234
+        },
+        {
+          pos: [120.122869,31.522929],
+          num: 12
+        }
+      ]
     }
   },
   props: {
@@ -28,7 +62,7 @@ export default {
     plugin: {
       type: Array,
       default: () => {
-        return ['Map3D', 'AMap.DistrictSearch']
+        return ['Map3D', 'AMap.DistrictSearch', 'AMap.MarkerClusterer']
         // 注意: 2.0版本AMap.Object3DLayer报错
       }
     }
@@ -89,7 +123,7 @@ export default {
               mask: mask,
               center: [120.30, 31.57],
               disableSocket:true,
-              viewMode:'3D',
+              // viewMode:'3D',
               mapStyle: 'amap://styles/darkblue',
               showLabel:false,
               labelzIndex:130,
@@ -124,6 +158,8 @@ export default {
           var lines = new AMap.Object3D.Line();
           var lineGeo = lines.geometry;
           this.addPoints3D(result, lineGeo, lines, map, object3Dlayer)
+          this.addMarker(AMap, map)
+          map.setFitView()
       })
     },
     addPoints3D (result, lineGeo, lines, map, object3Dlayer) {
@@ -162,6 +198,53 @@ export default {
       lnglat.x = AMap.Util.format(lnglat.x, 3);
       lnglat.y = AMap.Util.format(lnglat.y, 3);
       return lnglat;
+    },
+    // 添加marker
+    addMarker (AMap, map) {
+      var markers = []
+      this.staticPosition.forEach(v => {
+        markers.push(new AMap.Marker({
+          position: v.pos,
+          map,
+          content: `<div
+            style="background-color: hsla(180, 100%, 50%, 0.7);
+            height: 24px; width: 24px;
+            border: 1px solid hsl(180, 100%, 40%);
+            border-radius: 12px;
+            box-shadow: hsl(180, 100%, 50%) 0px 0px 1px;">
+            </div>`,
+          offset: new AMap.Pixel(-15, -15)
+        }))
+      })
+      // new AMap.MarkerClusterer(map, markers, {
+      //   gridSize: 80,
+      //   renderClusterMarker: (context) => {
+      //     this._renderClusterMarker(context, markers)
+      //   }
+      // });
+    },
+    _renderClusterMarker (context, markers) {
+      var count = markers.length;
+      var factor = Math.pow(context.count / count, 1 / 18);
+      var div = document.createElement('div');
+      var Hue = 180 - factor * 180;
+      var bgColor = 'hsla(' + Hue + ',100%,50%,0.7)';
+      var fontColor = 'hsla(' + Hue + ',100%,20%,1)';
+      var borderColor = 'hsla(' + Hue + ',100%,40%,1)';
+      var shadowColor = 'hsla(' + Hue + ',100%,50%,1)';
+      div.style.backgroundColor = bgColor;
+      var size = Math.round(30 + Math.pow(context.count / count, 1 / 5) * 20);
+      div.style.width = div.style.height = size + 'px';
+      div.style.border = 'solid 1px ' + borderColor;
+      div.style.borderRadius = size / 2 + 'px';
+      div.style.boxShadow = '0 0 1px ' + shadowColor;
+      div.innerHTML = context.count;
+      div.style.lineHeight = size + 'px';
+      div.style.color = fontColor;
+      div.style.fontSize = '14px';
+      div.style.textAlign = 'center';
+      context.marker.setOffset(new AMap.Pixel(-size / 2, -size / 2));
+      context.marker.setContent(div)
     }
   },
 }
