@@ -7,6 +7,7 @@ import "./assets/js/element";
 import echarts from "echarts";
 import "./assets/css/index.scss";
 import vueSeamlessScroll from "vue-seamless-scroll";
+import globalComponents from './components/global'
 import axios from 'axios';
 import {echartsSize} from './assets/js/util.js'
 import dataV from '@jiaminghi/data-view'
@@ -16,6 +17,7 @@ Vue.prototype.$moment = moment;
 Vue.prototype.$axios = axios;
 Vue.use(vueSeamlessScroll);
 Vue.use(dataV);
+Vue.use(globalComponents)
 
 
 Vue.config.productionTip = false;

@@ -3,7 +3,7 @@
     <!-- 左边部分 -->
     <div class="left">
       <border-box title="近一周流量统计">
-        <chart-bar idName="flowChartBar" :optionData="flowBarOps"></chart-bar>
+        <bar-chart idName="flowChartBar" :optionData="flowBarOps"></bar-chart>
       </border-box>
       <border-box title="交通指数排行">
         <tranfic></tranfic>
@@ -26,10 +26,10 @@
     <!-- 右边部分 -->
     <div class="right">
       <border-box title="近一周违法统计">
-        <chart-line idName="breakRules" :optionData="breakOps"></chart-line>
+        <line-chart idName="breakRules" :optionData="breakOps"></line-chart>
       </border-box>
       <border-box title="近一周违法排行">
-        <chart-bar idName="breakChartBar" :optionData="breakBarOps"></chart-bar>
+        <bar-chart idName="breakChartBar" :optionData="breakBarOps"></bar-chart>
       </border-box>
       <border-box title="实时违法记录">
         <break-note></break-note>
@@ -39,10 +39,6 @@
 </template>
 
 <script>
-import borderBox from '@/components/border-box'
-
-import chartBar from '@/components/common-chart-bar';
-import chartLine from '@/components/common-chart-line';
 
 import tranfic from './components/tranfic'
 import passNote from './components/passNote'
@@ -58,9 +54,6 @@ export default {
   name: "pandect",
   mixins: [flowBar, breakRules, breakBar],
   components: {
-    borderBox,
-    chartBar,
-    chartLine,
     tranfic,
     passNote,
     breakNote,

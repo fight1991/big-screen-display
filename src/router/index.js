@@ -20,6 +20,11 @@ export default new Router({
           name: "pandect",
           meta: { name: "总览" },
           component: pandect,
+        },{
+          path: "/home/parking",
+          name: "parking",
+          meta: { name: "智慧停车" },
+          component: pandect,
         },
       ],
     },

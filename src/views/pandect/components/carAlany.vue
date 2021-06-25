@@ -5,7 +5,7 @@
       <div class="today-txt text">今日活跃度</div>
     </div>
     <div class="chart">
-      <chart-pie idName="carAlay" :optionData="pieOps"></chart-pie>
+      <pie-chart idName="carAlay" :optionData="pieOps"></pie-chart>
     </div>
     <div class="pie-right">
       <div class="week-num num">80000</div>
@@ -15,13 +15,9 @@
 </template>
 <script>
 import pieData from '../mixins/pieData'
-import chartPie from "@/components/common-chart-pie";
 
 export default {
   mixins: [pieData],
-  components: {
-    chartPie
-  },
   data () {
     return {}
   }

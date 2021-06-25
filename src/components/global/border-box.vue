@@ -88,7 +88,7 @@
       color: #00E4FF;
       display: flex;
       justify-content: center;
-      background: url('../assets/img/pandect/box-title-bg.png') no-repeat center bottom;
+      background: url('../../assets/img/pandect/box-title-bg.png') no-repeat center bottom;
       background-size: 100% 31px;
       height: 41px;
       .title-center {
