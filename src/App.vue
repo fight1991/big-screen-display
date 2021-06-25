@@ -21,7 +21,7 @@ export default {
 #app {
   width: 1920px;
   height: 1080px;
-  background: #101326;
+  // background: #101326;
   display: flex;
   justify-content: center;
   overflow: hidden;

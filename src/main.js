@@ -6,6 +6,7 @@ import "./assets/js/element";
 //清除浏览器默认样式
 import echarts from "echarts";
 import "./assets/css/index.scss";
+
 import vueSeamlessScroll from "vue-seamless-scroll";
 import globalComponents from './components/global'
 import axios from 'axios';

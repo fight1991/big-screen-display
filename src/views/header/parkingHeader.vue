@@ -1,8 +1,12 @@
 <template>
   <div class="header">
     <div class="header-left">
+      <div class="route-item">停车场统计</div>
+      <div class="route-item route-income">收入统计</div>
+      <div class="route-item">设备实况</div>
+
     </div>
-    <div class="header-center">电动自行车一张网数据平台</div>
+    <div class="header-center">智慧停车一张网智慧平台</div>
     <div class="header-right">
       <span class="time-item">{{dateNow}}</span>
       <span class="time-item">{{weekDay}}</span>
@@ -45,18 +49,18 @@
 </script>
 
 <style scoped lang="scss">
-  @import "../../../assets/css/mixins";
+  @import "../../assets/css/mixins";
   .header-nav{
     display: flex;
     margin-top: 8px;
   }
   .header{
     width: 100%;
-    padding: 10px 30px 0;
+    // padding: 10px 30px 0;
     height: 100px;
     display: flex;
-    align-items: center;
-    background: url('../../../assets/img/pandect/head-bg.png') no-repeat center;
+    // align-items: center;
+    background: url('../../assets/img/public/parking-head-bg.png') no-repeat center;
     background-size: 100%;
     justify-content: space-between;
     position: fixed;
@@ -73,8 +77,22 @@
       display: flex;
     }
   }
-  .header-left{
+  .header-left {
     flex: 1 0 0;
+    display: flex;
+    justify-content: center;
+    .route-item {
+      width: 180px;
+      height: 50px;
+      margin-top: 5px;
+      line-height: 50px;
+      text-align: center;
+    }
+    .route-income {
+      background: url("../../assets/img/public/parking-tab-bg.png") no-repeat;
+      background-size: 100% 100%;
+    }
+    // align-items: center;
   }
 
   .header-center{
@@ -92,9 +110,10 @@
   .header-right{
     flex:  1 0 0;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
+    line-height: 55px;
     .time-item {
-      padding: 0 10px;
+      padding: 0 20px;
       font-size: 20px;
     }
   }
