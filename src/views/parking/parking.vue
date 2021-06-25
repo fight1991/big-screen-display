@@ -7,7 +7,7 @@
         <!-- 左边部分 -->
         <div class="left">
           <border-box-2 title="泊位统计">
-            <!-- <bar-chart idName="flowChartBar" :optionData="flowBarOps"></bar-chart> -->
+            <multi-bar-chart idName="parkBar" :optionData="parkBarOps"></multi-bar-chart>
           </border-box-2>
           <border-box-2 title="车流量分析">
             <tranfic></tranfic>
@@ -29,13 +29,13 @@
         </div>
         <!-- 右边部分 -->
         <div class="right">
-          <border-box-2 title="近一周">
+          <border-box-2 title="近一周收入">
             <line-chart idName="breakRules" :optionData="breakOps"></line-chart>
           </border-box-2>
-          <border-box-2 title="近一周违法排行">
+          <border-box-2 title="设备概况">
             <bar-chart idName="breakChartBar" :optionData="breakBarOps"></bar-chart>
           </border-box-2>
-          <border-box-2 title="实时违法记录">
+          <border-box-2 title="实时交易记录">
             <break-note></break-note>
           </border-box-2>
         </div>
@@ -54,13 +54,13 @@ import breakNote from './components/breakNote'
 import carAlany from './components/carAlany'
 import mapData from './components/mapData'
 
-import flowBar from './mixins/flowBar'
+import parkBar from './mixins/parkBar'
 import breakRules from './mixins/breakRules'
 import breakBar from './mixins/breakBar'
 
 export default {
   name: "parking",
-  mixins: [flowBar, breakRules, breakBar],
+  mixins: [parkBar, breakRules, breakBar],
   components: {
     tranfic,
     passNote,
