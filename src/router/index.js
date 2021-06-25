@@ -3,6 +3,8 @@ import Router from "vue-router";
 
 const home = () => import("@/views/home/index.vue");
 const pandect = () => import("@/views/pandect/index.vue");
+const parking = () => import("@/views/parking/parking.vue");
+
 
 Vue.use(Router);
 
@@ -24,7 +26,7 @@ export default new Router({
           path: "/home/parking",
           name: "parking",
           meta: { name: "智慧停车" },
-          component: pandect,
+          component: parking,
         },
       ],
     },

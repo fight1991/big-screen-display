@@ -70,6 +70,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./pandect";
+@import "./index.scss";
 
 </style>
