@@ -98,13 +98,12 @@
   .header-center{
     font-size:32px;
     font-weight:400;
-    padding-top: 20px;
-    opacity:1;
+    opacity: 1;
     width: 703px;
     flex: 703px 0 0;
-    height: 88px;
+    height: 100px;
     text-align: center;
-    line-height: 1em;
+    line-height: 100px;
   }
 
   .header-right{

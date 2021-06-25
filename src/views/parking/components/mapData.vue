@@ -2,9 +2,9 @@
   <div class="map-box">
     <div class="title">
       <div class="title-left">
-        <div class="title-top">今日过车辆</div>
+        <div class="title-top">年度交易总金额(万元)</div>
         <div class="title-bottom">
-          <div class="single-num" v-for="(item, index) in todayNum" :key="'index'+index">
+          <div class="single-num" v-for="(item, index) in leftNum" :key="'index'+index">
             <count-to
             :start-val="0"
             :end-val="+item"
@@ -13,10 +13,22 @@
           </div>
         </div>
       </div>
-       <div class="title-right">
-        <div class="title-top">月过车辆</div>
+      <div class="title-center">
+        <div class="title-top">今日交易金额(元)</div>
         <div class="title-bottom">
-          <div class="single-num" v-for="(item, index) in monthNum" :key="'index'+index">
+          <div class="single-num" v-for="(item, index) in centerNum" :key="'index'+index">
+            <count-to
+            :start-val="0"
+            :end-val="+item"
+            :decimals="0"
+            :duration="2600"/>
+          </div>
+        </div>
+      </div>
+      <div class="title-right">
+        <div class="title-top">今日交易次数</div>
+        <div class="title-bottom">
+          <div class="single-num" v-for="(item, index) in rightNum" :key="'index'+index">
             <count-to
             :start-val="0"
             :end-val="+item"
@@ -31,13 +43,9 @@
         <a-map ref="gaodeMap" :autoGps="true"></a-map>
       </div>
       <div class="car-num">
-        <div class="num-box">
-          <div class="num-value">32134</div>
-          <div class="num-text">车辆数</div>
-        </div>
-        <div class="num-box">
-          <div class="num-value">3243</div>
-          <div class="num-text">设备数</div>
+        <div class="num-box" v-for="item in dataItem" :key="item.id">
+          <div class="num-value">{{item.value}}</div>
+          <div class="num-text">{{item.name}}</div>
         </div>
       </div>
     </div>
@@ -55,22 +63,47 @@ export default {
     return {
       map: null,
       AMap: null,
-      todayNum: '84760',
-      monthNum: '8389925',
-      todayTimer: null,
-      monthTimer: null
+      leftNum: '84760',
+      centerNum: '8325',
+      rightNum: '121',
+      leftTimer: null,
+      centerTimer: null,
+      rightTimer: null,
+      dataItem: [
+        {
+          id: 'data1',
+          name: '泊位总数(个)',
+          value: 34234
+        },
+        {
+          id: 'data2',
+          name: '今日停车流量(次)',
+          value: 124
+        },
+        {
+          id: 'data3',
+          name: '停车压力',
+          value: '49.3%'
+        },
+        {
+          id: 'data4',
+          name: '高峰时段',
+          value: '17:30'
+        }
+      ]
     }
   },
   mounted () {
     this.$refs.gaodeMap.initAMap()
   },
   created () {
-    this.addCountNum('todayNum')
-    this.addCountNum('monthNum')
+    this.addCountNum()
   },
   methods: {
-    addCountNum (num) {
-      this.todayTimer = this.createTimers(num)
+    addCountNum () {
+      this.leftTimer = this.createTimers('leftNum')
+      this.centerTimer = this.createTimers('centerNum')
+      this.rightTimer = this.createTimers('rightNum')
     },
     createTimers (num) {
       return setInterval(() => {
@@ -80,9 +113,13 @@ export default {
       }, 3000)
     },
   },
+  clearTimer () {
+    this.leftTimer && clearInterval(this.leftTimer)
+    this.centerTimer && clearInterval(this.centerTimer)
+    this.rightTimer && clearInterval(this.rightTimer)
+  },
   beforeDestroy () {
-    this.todayTimer && clearInterval(this.todayTimer)
-    this.monthTimer && clearInterval(this.monthTimer)
+    this.clearTimer()
   }
 }
 </script>
@@ -106,7 +143,7 @@ export default {
       border-radius: 2px;
       text-align: center;
       padding: 10px 0;
-      margin-top: 20px;
+      margin-top: 15px;
       font-size: 18px;
       .num-text {
         font-size: 15px;

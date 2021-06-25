@@ -6,15 +6,15 @@
       <div class="pandect">
         <!-- 左边部分 -->
         <div class="left">
-          <border-box-2 title="近一周流量统计">
+          <border-box-2 title="泊位统计">
             <!-- <bar-chart idName="flowChartBar" :optionData="flowBarOps"></bar-chart> -->
           </border-box-2>
-          <border-box title="交通指数排行">
+          <border-box-2 title="车流量分析">
             <tranfic></tranfic>
-          </border-box>
-          <border-box title="实时过车记录">
+          </border-box-2>
+          <border-box-2 title="实时泊位概况">
             <pass-note></pass-note>
-          </border-box>
+          </border-box-2>
         </div>
         <!-- 中间部分 -->
         <div class="center">
@@ -22,22 +22,22 @@
             <map-data></map-data>
           </div>
           <div class="center-bottom">
-            <border-box title="车辆分析">
+            <border-box-2 title="支付分析">
               <carAlany></carAlany>
-            </border-box>
+            </border-box-2>
           </div>
         </div>
         <!-- 右边部分 -->
         <div class="right">
-          <border-box title="近一周违法统计">
+          <border-box-2 title="近一周">
             <line-chart idName="breakRules" :optionData="breakOps"></line-chart>
-          </border-box>
-          <border-box title="近一周违法排行">
+          </border-box-2>
+          <border-box-2 title="近一周违法排行">
             <bar-chart idName="breakChartBar" :optionData="breakBarOps"></bar-chart>
-          </border-box>
-          <border-box title="实时违法记录">
+          </border-box-2>
+          <border-box-2 title="实时违法记录">
             <break-note></break-note>
-          </border-box>
+          </border-box-2>
         </div>
       </div>
     </div>
