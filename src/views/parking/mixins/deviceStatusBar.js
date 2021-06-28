@@ -21,11 +21,28 @@ export default {
         },
         xAxis: {
             type: 'value',
-            boundaryGap: [0, 0.01]
+            splitLine: {
+              show: true,
+              //  改变轴线颜色
+              lineStyle: {
+                color: ['#4D4D4D'],
+                width: 1,
+                type: 'dashed'
+              }
+            }
         },
         yAxis: {
             type: 'category',
-            data: ['道闸', '地磁', '泊位机器人']
+            data: ['道闸', '地磁', '泊位机器人'],
+            splitLine: {
+              show: false,
+              //  改变轴线颜色
+              lineStyle: {
+                color: ['#4D4D4D'],
+                width: 1,
+                type: 'dashed'
+              }
+            }
         },
         series: [
             {

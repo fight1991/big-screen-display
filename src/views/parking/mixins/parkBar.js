@@ -15,12 +15,12 @@ export default {
         },
         xAxis: [
             {
-                type: 'category',
-                axisTick: {
-                  alignWithLabel: true
-                },
-                data: ['车位锁', '地磁', '道闸', '其它']
-            }
+              type: 'category',
+              axisTick: {
+                alignWithLabel: true
+              },
+              data: ['车位锁', '地磁', '道闸', '其它'],
+            },
         ],
         yAxis: [
             {
@@ -37,6 +37,15 @@ export default {
               },
               axisLabel: {
                   formatter: '{value}'
+              },
+              splitLine: {
+                show: true,
+                //  改变轴线颜色
+                lineStyle: {
+                  color: ['#4D4D4D'],
+                  width: 1,
+                  type: 'dashed'
+                }
               }
             },
             {
@@ -53,6 +62,15 @@ export default {
               },
               axisLabel: {
                   formatter: '{value}'
+              },
+              splitLine: {
+                show: true,
+                //  改变轴线颜色
+                lineStyle: {
+                  color: ['#4D4D4D'],
+                  width: 1,
+                  type: 'dashed'
+                }
               }
             }
         ],

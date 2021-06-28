@@ -33,7 +33,7 @@
             <line-chart idName="weekLineIncome" :optionData="lineOps"></line-chart>
           </border-box-2>
           <border-box-2 title="设备概况">
-            <bar-chart idName="deviceChartBar" :optionData="deviceStatus"></bar-chart>
+            <horizon-bar-chart idName="deviceChartBar" :optionData="deviceStatus"></horizon-bar-chart>
           </border-box-2>
           <border-box-2 title="实时交易记录">
             <pay-note></pay-note>
