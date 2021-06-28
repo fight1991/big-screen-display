@@ -112,11 +112,11 @@ export default {
         this[num] = temp.toString()
       }, 3000)
     },
-  },
-  clearTimer () {
-    this.leftTimer && clearInterval(this.leftTimer)
-    this.centerTimer && clearInterval(this.centerTimer)
-    this.rightTimer && clearInterval(this.rightTimer)
+    clearTimer () {
+      this.leftTimer && clearInterval(this.leftTimer)
+      this.centerTimer && clearInterval(this.centerTimer)
+      this.rightTimer && clearInterval(this.rightTimer)
+    },
   },
   beforeDestroy () {
     this.clearTimer()
