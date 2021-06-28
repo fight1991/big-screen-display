@@ -1,8 +1,8 @@
 export default {
   data () {
     return {
-      breakOps: {
-        color: ['#00FFEA', '#00DDFF', '#37A2FF', '#FF0087', '#FFBF00'],
+      lineOps: {
+        color: ['#22CCDE', '#D87E42'],
         xAxis: {
           type: 'category',
           boundaryGap: false,
@@ -12,9 +12,15 @@ export default {
             type: 'value',
             name: '(次)'
         },
+        legend: {
+          data: ['交易次数', '交易金额'],
+          top: 'top',
+      },
         series: [{
+            name: '交易次数',
             data: [820, 932, 901, 934, 1290, 1330, 1320],
             type: 'line',
+            smooth: true,
             areaStyle: {
               opacity: 0.1,
               color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
@@ -25,6 +31,22 @@ export default {
                 color: '#020D32'
               }])
             }
+        },
+        {
+          name: '交易金额',
+          data: [420, 732, 701, 834, 1090, 1030, 1020],
+          type: 'line',
+          smooth: true,
+          areaStyle: {
+            opacity: 0.1,
+            color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+              offset: 0,
+              color: '#D87E42'
+            }, {
+              offset: 1,
+              color: '#FCE417'
+            }])
+          }
         }]
       }
     }

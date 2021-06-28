@@ -2,7 +2,7 @@ export default {
   data () {
     return {
       payEchart: {
-        color: ['#1AB5FE', '#069BC9', '#83BA0D'],
+        color: ['#1AB5FE', '#069BC9', '#83BA0D', '#FF8562', '#FFC637'],
         tooltip: {
           trigger: 'axis',
           axisPointer: {

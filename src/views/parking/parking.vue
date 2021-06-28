@@ -30,13 +30,13 @@
         <!-- 右边部分 -->
         <div class="right">
           <border-box-2 title="近一周收入">
-            <line-chart idName="breakRules" :optionData="breakOps"></line-chart>
+            <line-chart idName="weekLineIncome" :optionData="lineOps"></line-chart>
           </border-box-2>
           <border-box-2 title="设备概况">
-            <bar-chart idName="breakChartBar" :optionData="breakBarOps"></bar-chart>
+            <bar-chart idName="deviceChartBar" :optionData="deviceStatus"></bar-chart>
           </border-box-2>
           <border-box-2 title="实时交易记录">
-            <break-note></break-note>
+            <pay-note></pay-note>
           </border-box-2>
         </div>
       </div>
@@ -49,29 +49,25 @@
 import HeaderNav from '../header/parkingHeader.vue'
 
 import tranfic from './components/tranfic'
-import passNote from './components/passNote'
-import breakNote from './components/breakNote'
+import payNote from './components/payNote'
 import mapData from './components/mapData'
 import parkingStatus from './components/parkingStatus'
 import payData from './components/payData'
 
 import parkBar from './mixins/parkBar'
-import breakRules from './mixins/breakRules'
-import breakBar from './mixins/breakBar'
-import ParkingStatus from './components/parkingStatus.vue'
+import weekLine from './mixins/weekLine'
+import deviceStatus from './mixins/deviceStatusBar'
 
 
 export default {
   name: "parking",
-  mixins: [parkBar, breakRules, breakBar],
+  mixins: [parkBar, weekLine, deviceStatus],
   components: {
     tranfic,
-    passNote,
-    breakNote,
+    payNote,
     mapData,
     parkingStatus,
     HeaderNav,
-    ParkingStatus,
     payData
   },
   data() {
