@@ -13,7 +13,7 @@
             <tranfic></tranfic>
           </border-box-2>
           <border-box-2 title="实时泊位概况">
-            <pass-note></pass-note>
+            <parking-status></parking-status>
           </border-box-2>
         </div>
         <!-- 中间部分 -->
@@ -23,7 +23,7 @@
           </div>
           <div class="center-bottom">
             <border-box-2 title="支付分析">
-              <carAlany></carAlany>
+              <pay-data></pay-data>
             </border-box-2>
           </div>
         </div>
@@ -51,12 +51,15 @@ import HeaderNav from '../header/parkingHeader.vue'
 import tranfic from './components/tranfic'
 import passNote from './components/passNote'
 import breakNote from './components/breakNote'
-import carAlany from './components/carAlany'
 import mapData from './components/mapData'
+import parkingStatus from './components/parkingStatus'
+import payData from './components/payData'
 
 import parkBar from './mixins/parkBar'
 import breakRules from './mixins/breakRules'
 import breakBar from './mixins/breakBar'
+import ParkingStatus from './components/parkingStatus.vue'
+
 
 export default {
   name: "parking",
@@ -65,9 +68,11 @@ export default {
     tranfic,
     passNote,
     breakNote,
-    carAlany,
     mapData,
-    HeaderNav
+    parkingStatus,
+    HeaderNav,
+    ParkingStatus,
+    payData
   },
   data() {
     return {

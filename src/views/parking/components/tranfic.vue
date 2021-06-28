@@ -17,23 +17,31 @@ export default {
       roadData: [
         {
           id: 'road1',
-          roadName: '人民路交叉口',
+          roadName: '梁溪区',
           value: 88
         },{
           id: 'road2',
-          roadName: '清舒道交叉口',
+          roadName: '锡山区',
           value: 61
         },{
           id: 'road3',
-          roadName: '蠡湖大道交叉口',
+          roadName: '惠山区',
           value: 53
         },{
           id: 'road4',
-          roadName: '具区路交叉口',
+          roadName: '滨湖区',
           value: 92
         },{
           id: 'road5',
-          roadName: '干城路交叉口',
+          roadName: '新吴区',
+          value: 77
+        },{
+          id: 'road6',
+          roadName: '江阴市',
+          value: 77
+        },{
+          id: 'road7',
+          roadName: '宜兴市',
           value: 77
         }
       ]
