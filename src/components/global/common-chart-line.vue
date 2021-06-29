@@ -52,9 +52,10 @@ export default {
           },
           type: 'category',
           axisLine: {
+            show: true,
             lineStyle: {
               // 设置x轴颜色
-              color: '#4D4D4D'
+              color: '#33CBFF'
             }
           },
           axisTick: {
@@ -89,8 +90,14 @@ export default {
           name: '',
           nameTextStyle: {
             padding: [0, 0, 0, 0], // 四个数字分别为上右下左与原位置距离
-            fontSize: this.echartsSize(12),
-            color: "#999",
+            fontSize: this.echartsSize(14),
+            color: "#89CEFF",
+          },
+          axisLabel: {
+            textStyle: {
+              fontSize: this.echartsSize(14),
+              color: "#89CEFF",
+            },
           },
           type: 'value',
           axisLine: {
@@ -98,12 +105,6 @@ export default {
           },
           axisTick: {
             show: false
-          },
-          axisLabel: {
-            textStyle: {
-              fontSize: this.echartsSize(14),
-              color: "#999",
-            },
           },
           //网格样式
           splitLine: {
@@ -119,7 +120,7 @@ export default {
           symbolSize: this.echartsSize(6),
           label: {
             normal: {
-              show: true,
+              show: false,
               color: '#999',
               fontSize: this.echartsSize(14),
               position: 'top'

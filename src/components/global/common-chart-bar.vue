@@ -73,14 +73,14 @@ export default {
             name: "",
             type: "value",
             nameTextStyle:{
-              fontSize: this.echartsSize(12),
-              color: "#999",
+              fontSize: this.echartsSize(14),
+              color: "#89CEFF",
             },
             axisLabel: {
               margin: this.echartsSize(8),
               textStyle: {
                 fontSize: this.echartsSize(12),
-                color: "#999",
+                color: "#89CEFF",
               },
             },
             //设置轴线的属性

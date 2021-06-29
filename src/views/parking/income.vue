@@ -88,7 +88,7 @@ export default {
   padding: 2px 0 0 10px;
   .el-input__inner {
     background-color: transparent;
-    border: 1px dashed #ccc;
+    border: 1px dashed #89CEFF;
   }
   .el-range-input {
     background-color: transparent;

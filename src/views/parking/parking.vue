@@ -3,7 +3,9 @@
   <div class="max-screen">
     <HeaderNav>
       <div class="header-left">
-        <div class="route-item">停车场统计</div>
+        <router-link to="/place" class="routeLink">
+          <div class="route-item">停车场统计</div>
+        </router-link>
         <router-link to="/income" class="routeLink">
           <div class="route-item route-income">收入统计</div>
         </router-link>
