@@ -14,4 +14,18 @@
       box-sizing: border-box;
     }
   }
+  .date-time {
+    .el-range-input {
+      background-color: transparent;
+    }
+  }
+}
+.el-picker-panel__body {
+  background-color: #070b3b;
+}
+.el-picker-panel {
+  // border-color: #070b3b;
+}
+.el-range-input {
+  color: #00FFFC!important;
 }

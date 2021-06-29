@@ -7,6 +7,16 @@
           <div class="route-item">首页</div>
         </router-link>
         <div class="route-item">收入统计</div>
+        <div class="date-time">
+          <el-date-picker
+            v-model="times"
+            type="daterange"
+            value-format="yyyy-MM-dd"
+            range-separator="至"
+            start-placeholder="开始日期"
+            end-placeholder="结束日期">
+          </el-date-picker>
+        </div>
       </div>
     </HeaderNav>
     <div class="content">
@@ -55,7 +65,7 @@ export default {
   },
   data() {
     return {
-   
+      times: ['2021-06-29', '2021-06-29']
     };
   },
   methods: {}
@@ -71,6 +81,19 @@ export default {
 .routeLink {
   color: inherit;
   text-decoration: none;
+}
+.date-time {
+  display: flex;
+  align-items: center;
+  padding: 2px 0 0 10px;
+  .el-input__inner {
+    background-color: transparent;
+    border: 1px dashed #ccc;
+  }
+  .el-range-input {
+    background-color: transparent;
+  }
+  
 }
 .header-slot {
   display: flex;

@@ -10,7 +10,8 @@ import {
   Form,
   FormItem,
   Dialog,
-  Progress
+  Progress,
+  DatePicker
 } from "element-ui"; //按需引用Element-ui
 import "element-ui/lib/theme-chalk/index.css"; //element-ui组件的样式需要单独引入
 
@@ -24,3 +25,4 @@ Vue.use(Input);
 Vue.use(Button);
 Vue.use(Dialog);
 Vue.use(Progress);
+Vue.use(DatePicker);
