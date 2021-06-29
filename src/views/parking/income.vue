@@ -23,8 +23,12 @@
           </border-box-2>
         </div>
         <div class="content-bottom">
-          <border-box-2 title="实时交易" height="100%"></border-box-2>
-          <border-box-2 title="月收入统计" height="100%" size="small"></border-box-2>
+          <border-box-2 title="实时交易" height="100%">
+            <trade></trade>
+          </border-box-2>
+          <border-box-2 title="月收入统计" height="100%" size="small">
+            <month-income></month-income>
+          </border-box-2>
         </div>
       </div>
     </div>
@@ -37,14 +41,17 @@ import HeaderNav from '../header/parkingHeader.vue'
 import areaIncome from './incomeComponents/areaIncome.vue'
 import payPercent from './incomeComponents/payPercent.vue'
 import statusPercent from './incomeComponents/statusPercent.vue'
-
+import trade from './incomeComponents/trade'
+import monthIncome from './incomeComponents/monthIncome.vue'
 export default {
   name: "parking",
   components: {
     HeaderNav,
     areaIncome,
     payPercent,
-    statusPercent
+    statusPercent,
+    trade,
+    monthIncome
   },
   data() {
     return {
