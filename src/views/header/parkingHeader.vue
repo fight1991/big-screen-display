@@ -60,7 +60,7 @@
     display: flex;
     // align-items: center;
     background: url('../../assets/img/public/parking-head-bg.png') no-repeat center;
-    background-size: 100%;
+    background-size: 100% 100%;
     justify-content: space-between;
     position: fixed;
     top: 0;

@@ -11,7 +11,18 @@
     </HeaderNav>
     <div class="content">
       <div class="pandect">
-        
+        <border-box-2 title="车辆进场" size="small" height="100%">
+
+        </border-box-2>
+        <border-box-2 title="车辆离场" size="small" height="100%">
+          
+        </border-box-2>
+        <border-box-2 title="设备运行状态" size="small" height="100%">
+          
+        </border-box-2>
+        <border-box-2 title="自助缴费机" size="small" height="100%">
+          
+        </border-box-2>
       </div>
     </div>
   </div>
@@ -46,21 +57,27 @@ export default {
   text-decoration: none;
 }
 .header-slot {
-    display: flex;
-    justify-content: flex-start;
-    padding-left: 50px;
-    .route-item {
-      width: 80px;
-      height: 50px;
-      margin-top: 5px;
-      line-height: 50px;
-      text-align: center;
-      cursor: pointer;
-      transition: all .5s;
-      &:hover {
-        transform: scale(1.2);
-      }
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 50px;
+  .route-item {
+    width: 80px;
+    height: 50px;
+    margin-top: 5px;
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+    transition: all .5s;
+    &:hover {
+      transform: scale(1.2);
     }
-    // align-items: center;
   }
+  // align-items: center;
+}
+.pandect {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 50% 50%;
+  grid-gap: 30px;
+}
 </style>

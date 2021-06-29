@@ -1,5 +1,5 @@
 <template>
-  <div class="border-box">
+  <div class="border-box" :style="{'background-image': 'url(' + imgMap[size] + ')', 'height': height}">
     <div class="border-title">
       <span class="shuxian"></span>
       {{title}}
@@ -23,7 +23,23 @@
   export default {
     name: "border-box",
     props:{
-      title:''
+      title:'',
+      size: {
+        type: String,
+        default: 'min'
+      },
+      height: {
+        type: String,
+        default: '300px'
+      }
+    },
+    data () {
+      return {
+        imgMap: {
+          min: require('@/assets/img/public/box-home.png'),
+          small: require('@/assets/img/public/box-parking.png')
+        }
+      }
     }
   }
 </script>
@@ -37,7 +53,8 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    background:url("../../assets/img/public/box-home.png") no-repeat center;
+    background-repeat: no-repeat;
+    background-position: center;
     background-size: 100% 100%;
     .content-box {
       flex: 1;

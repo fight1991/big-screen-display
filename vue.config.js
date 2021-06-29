@@ -1,7 +1,7 @@
 module.exports = {
   publicPath: '/',
   outputDir: 'dist', //  生产环境构建文件的目录
-  assetsDir: 'static', //  outputDir的静态资源(js、css、img、fonts)目录
+  assetsDir: 'assets', //  outputDir的静态资源(js、css、img、fonts)目录
   devServer: {
     open: true,
     host: '127.0.0.1',
