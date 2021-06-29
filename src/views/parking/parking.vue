@@ -4,7 +4,9 @@
     <HeaderNav>
       <div class="header-left">
         <div class="route-item">停车场统计</div>
-        <div class="route-item route-income">收入统计</div>
+        <router-link to="/income" class="routeLink">
+          <div class="route-item route-income">收入统计</div>
+        </router-link>
         <router-link to="/device" class="routeLink">
           <div class="route-item">设备实况</div>
         </router-link>
