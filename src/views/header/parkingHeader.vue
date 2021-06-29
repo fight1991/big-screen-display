@@ -1,10 +1,9 @@
 <template>
   <div class="header">
     <div class="header-left">
-      <div class="route-item">停车场统计</div>
-      <div class="route-item route-income">收入统计</div>
-      <div class="route-item">设备实况</div>
-
+      <div class="header-left-content">
+        <slot></slot>
+      </div>
     </div>
     <div class="header-center">智慧停车一张网智慧平台</div>
     <div class="header-right">
@@ -81,18 +80,9 @@
     flex: 1 0 0;
     display: flex;
     justify-content: center;
-    .route-item {
-      width: 180px;
-      height: 50px;
-      margin-top: 5px;
-      line-height: 50px;
-      text-align: center;
+    .header-left-content {
+      width: 100%;
     }
-    .route-income {
-      background: url("../../assets/img/public/parking-tab-bg.png") no-repeat;
-      background-size: 100% 100%;
-    }
-    // align-items: center;
   }
 
   .header-center{

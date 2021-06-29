@@ -1,7 +1,15 @@
 <template>
 <div class="outer-container">
   <div class="max-screen">
-    <HeaderNav></HeaderNav>
+    <HeaderNav>
+      <div class="header-left">
+        <div class="route-item">停车场统计</div>
+        <div class="route-item route-income">收入统计</div>
+        <router-link to="/device" class="routeLink">
+          <div class="route-item">设备实况</div>
+        </router-link>
+      </div>
+    </HeaderNav>
     <div class="content">
       <div class="pandect">
         <!-- 左边部分 -->
@@ -85,4 +93,29 @@ export default {
   background:url("../../assets/img/pandect/bg.png") no-repeat;
   background-size: cover;
 }
+.routeLink {
+  color: inherit;
+  text-decoration: none;
+}
+.header-left {
+    display: flex;
+    justify-content: center;
+    .route-item {
+      width: 180px;
+      height: 50px;
+      margin-top: 5px;
+      line-height: 50px;
+      text-align: center;
+      cursor: pointer;
+      transition: all .5s;
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+    .route-income {
+      background: url("../../assets/img/public/parking-tab-bg.png") no-repeat;
+      background-size: 100% 100%;
+    }
+    // align-items: center;
+  }
 </style>
