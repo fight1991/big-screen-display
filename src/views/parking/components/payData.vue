@@ -1,6 +1,6 @@
 <template>
   <div class="box-echart">
-    <bar-chart idName="pieStatus" :optionData="payEchart"></bar-chart>
+    <bar-chart idName="barPieStatus" :optionData="payEchart"></bar-chart>
   </div>
 </template>
 <script>

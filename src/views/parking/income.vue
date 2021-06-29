@@ -12,9 +12,20 @@
     <div class="content">
       <div class="pandect">
         <div class="content-top">
-
+          <border-box-2 title="区域收费情况" height="100%">
+            <area-income></area-income>
+          </border-box-2>
+          <border-box-2 title="支付方式占比" height="100%">
+            <pay-percent></pay-percent>
+          </border-box-2>
+          <border-box-2 title="设备收入占比" height="100%">
+            <status-percent></status-percent>
+          </border-box-2>
         </div>
-        <div class="content-bottom"></div>
+        <div class="content-bottom">
+          <border-box-2 title="实时交易" height="100%"></border-box-2>
+          <border-box-2 title="月收入统计" height="100%" size="small"></border-box-2>
+        </div>
       </div>
     </div>
   </div>
@@ -23,11 +34,17 @@
 
 <script>
 import HeaderNav from '../header/parkingHeader.vue'
+import areaIncome from './incomeComponents/areaIncome.vue'
+import payPercent from './incomeComponents/payPercent.vue'
+import statusPercent from './incomeComponents/statusPercent.vue'
 
 export default {
   name: "parking",
   components: {
     HeaderNav,
+    areaIncome,
+    payPercent,
+    statusPercent
   },
   data() {
     return {
