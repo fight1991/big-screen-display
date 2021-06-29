@@ -32,7 +32,7 @@ export default {
                       align : 'center',
                       baseline : 'middle',
                       fontFamily : '微软雅黑',
-                      fontSize : this.echartsSize(15),
+                      fontSize : this.echartsSize(10),
                       // fontWeight : 'bolder'
                   },
                         
