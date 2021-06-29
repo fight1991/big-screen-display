@@ -26,6 +26,11 @@ export default {
                 axisTick: {
                   alignWithLabel: true
                 },
+                axisLabel: {
+                  textStyle: {
+                    color: '##33CBFF'
+                  }
+                },
                 data: ['微信', '支付宝', '银联', '现金', '其它']
             }
         ],
@@ -36,10 +41,10 @@ export default {
               max: 250,
               position: 'left',
               axisLine: {
-                  show: true,
-                  // lineStyle: {
-                  //     color: colors[2]
-                  // }
+                  show: false,
+                  lineStyle: {
+                      color: '##33CBFF'
+                  }
               },
               axisLabel: {
                   formatter: '{value}'
@@ -91,7 +96,7 @@ export default {
                   align : 'center',
                   baseline : 'middle',
                   fontFamily : '微软雅黑',
-                  fontSize : this.echartsSize(15),
+                  fontSize : this.echartsSize(10),
                   // fontWeight : 'bolder'
                },
                     

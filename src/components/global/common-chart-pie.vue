@@ -51,7 +51,7 @@ export default {
             label: {
               normal: {
                 formatter: "{b}",
-                fontSize: this.echartsSize(14)
+                fontSize: this.echartsSize(10)
               },
               position: "outer"
             },

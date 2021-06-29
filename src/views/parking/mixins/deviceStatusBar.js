@@ -29,7 +29,13 @@ export default {
                 width: 1,
                 type: 'dashed'
               }
-            }
+            },
+            axisLine: {
+              show: true,
+              lineStyle: {
+                color: '#33CBFF'
+              }
+            },
         },
         yAxis: {
             type: 'category',
@@ -42,7 +48,13 @@ export default {
                 width: 1,
                 type: 'dashed'
               }
-            }
+            },
+            axisLine: {
+              show: true,
+              lineStyle: {
+                color: '#33CBFF'
+              }
+            },
         },
         series: [
             {

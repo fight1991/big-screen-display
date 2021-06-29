@@ -15,7 +15,7 @@ export default {
       myChart: "",
       option: {
         grid: {
-          top: this.echartsSize(50),
+          top: this.echartsSize(30),
           right: this.echartsSize(40),
           left: this.echartsSize(50),
           bottom: this.echartsSize(40)

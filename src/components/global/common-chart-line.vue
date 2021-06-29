@@ -78,7 +78,7 @@ export default {
           axisLabel: {
             margin: this.echartsSize(8),
             textStyle: {
-              fontSize: this.echartsSize(12),
+              fontSize: this.echartsSize(8),
               color: "#999",
             },
           },
@@ -90,12 +90,12 @@ export default {
           name: '',
           nameTextStyle: {
             padding: [0, 0, 0, 0], // 四个数字分别为上右下左与原位置距离
-            fontSize: this.echartsSize(14),
+            fontSize: this.echartsSize(12),
             color: "#89CEFF",
           },
           axisLabel: {
             textStyle: {
-              fontSize: this.echartsSize(14),
+              fontSize: this.echartsSize(12),
               color: "#89CEFF",
             },
           },
@@ -122,7 +122,7 @@ export default {
             normal: {
               show: false,
               color: '#999',
-              fontSize: this.echartsSize(14),
+              fontSize: this.echartsSize(12),
               position: 'top'
             }
           }

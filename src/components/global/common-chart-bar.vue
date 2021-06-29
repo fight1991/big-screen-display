@@ -44,7 +44,7 @@ export default {
             type: "category",
             nameTextStyle:{
               fontSize: 12,
-              color: "#999",
+              color: "#33CBFF",
             },
             data: [],
             axisLabel: {
@@ -54,7 +54,7 @@ export default {
               margin: this.echartsSize(8),
               textStyle: {
                 fontSize: this.echartsSize(12),
-                color: "#999",
+                color: "#33CBFF",
               } //设置x轴线字体的设置
             },
             axisLine: {

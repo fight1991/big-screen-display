@@ -15,10 +15,10 @@ export default {
       myChart: "",
       option: {
         grid: {
-          top: this.echartsSize(50),
-          right: this.echartsSize(40),
-          left: this.echartsSize(50),
-          bottom: this.echartsSize(40)
+          top: this.echartsSize(40),
+          right: this.echartsSize(30),
+          left: this.echartsSize(30),
+          bottom: this.echartsSize(20)
         },
         legend: {
           textStyle: {
@@ -29,19 +29,62 @@ export default {
           itemHeight: 16,
           bottom:"bottom"
         },
+        xAxis: [
+          {
+            axisLabel: {
+              margin: this.echartsSize(8),
+              textStyle: {
+                fontSize: this.echartsSize(8),
+                color: "#33CBFF",
+              },
+            },
+          }
+        ],
         yAxis: [
           {
             name: "",
             type: "value",
             nameTextStyle: {
-              fontSize: this.echartsSize(12),
-              color: "#999",
+              fontSize: this.echartsSize(8),
+              color: "#33CBFF",
             },
             axisLabel: {
               margin: this.echartsSize(8),
               textStyle: {
-                fontSize: this.echartsSize(12),
-                color: "#999",
+                fontSize: this.echartsSize(8),
+                color: "#33CBFF",
+              },
+            },
+            //设置轴线的属性
+            axisLine: {
+              show:false,
+            },
+            axisTick: {
+              show:false
+            },
+            // 控制背景网格线是否显示
+            splitLine: {
+              show: true,
+              //  改变轴线颜色
+              lineStyle: {
+                color: ['#4D4D4D'],
+                width: 1,
+                type: 'dashed'
+              }
+            }
+          },
+          {
+            name: "",
+            type: "value",
+            nameTextStyle: {
+              fontSize: this.echartsSize(8),
+              color: "#33CBFF",
+            },
+            axisLabel: {
+              margin: this.echartsSize(8),
+              textStyle: {
+                fontSize: this.echartsSize(8),
+                color: "#33CBFF",
               },
             },
             //设置轴线的属性
