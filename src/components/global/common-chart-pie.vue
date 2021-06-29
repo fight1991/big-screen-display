@@ -28,7 +28,7 @@ export default {
           y: "bottom",
           textStyle: {
             color: "#999",
-            fontSize: this.echartsSize(14)
+            // fontSize: this.echartsSize(14)
           },
           itemWidth: this.echartsSize(14),
           itemHeight: this.echartsSize(14),

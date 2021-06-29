@@ -15,7 +15,7 @@ export default {
           {
               name: '访问来源',
               type: 'pie',
-              radius: '50%',
+              radius: '70%',
               data: [
                   {value: 1048, name: '个人居民',},
                   {value: 735, name: '外卖快递'},
